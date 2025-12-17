@@ -1,1 +1,5 @@
-package com.
+package com.example.demo.repository;
+
+public interface StudentRepository{
+
+}
