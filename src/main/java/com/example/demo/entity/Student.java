@@ -1,7 +1,7 @@
 package com.example.demo.entity;
-
+import jakarta.persistence.Entity;
 import java.time.*;
-
+@Entity
 public class Student {
     private Long id;
     private String name;
@@ -38,13 +38,13 @@ public class Student {
     public void setCgpa(float cgpa) {
         this.cgpa = cgpa;
     }
-    public void Student(Long id,String name,String dept,LocalDate dob,float cgpa){
+    public Student(Long id,String name,String dept,LocalDate dob,float cgpa){
         this.id=id;
         this.name=name;
         this.dept=dept;
         this.dob=dob;
         this.cgpa=cgpa;
     }
-    public void Student(){
+    public Student(){
     }
 }
