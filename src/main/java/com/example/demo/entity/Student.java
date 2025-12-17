@@ -1,8 +1,9 @@
 package com.example.demo.entity;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import java.time.*;
 @Entity
 public class Student {
+    @Id
     private Long id;
     private String name;
     private String dept;
