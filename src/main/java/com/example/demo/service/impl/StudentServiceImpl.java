@@ -30,27 +30,24 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student getStudentById(Long id) {
         Optional<Student> student = stdrepo.findById(id);
-        return student.orElse(null); // or throw custom exception
-    }
-
-    @Override
-    public Student updateStudent(Long id, Student studentDetails) {
-        Optional<Student> optionalStudent = stdrepo.findById(id);
-        if (optionalStudent.isPresent()) {
-            Student existingStudent = optionalStudent.get();
-            existingStudent.setName(studentDetails.getName());
-            existingStudent.setDept(studentDetails.getDept());
-            existingStudent.setDob(studentDetails.getDob());
-            existingStudent.setCgpa(studentDetails.getCgpa());
-            return stdrepo.save(existingStudent);
-        } else {
-            return null; 
-        }
-    }
-
-    // DELETE: Delete student by ID
-    @Override
-    public void deleteStudent(Long id) {
-        stdrepo.deleteById(id);
-    }
+        return student.orElse(null); 
+     }
+//     @Override
+//     public Student updateStudent(Long id, Student studentDetails) {
+//         Optional<Student> optionalStudent = stdrepo.findById(id);
+//         if (optionalStudent.isPresent()) {
+//             Student existingStudent = optionalStudent.get();
+//             existingStudent.setName(studentDetails.getName());
+//             existingStudent.setDept(studentDetails.getDept());
+//             existingStudent.setDob(studentDetails.getDob());
+//             existingStudent.setCgpa(studentDetails.getCgpa());
+//             return stdrepo.save(existingStudent);
+//         } else {
+//             return null; 
+//         }
+//     }
+//     @Override
+//     public void deleteStudent(Long id) {
+//         stdrepo.deleteById(id);
+//     }
 }
