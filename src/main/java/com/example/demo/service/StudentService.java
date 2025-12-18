@@ -6,7 +6,8 @@ import java.util.*;
 public interface StudentService {
     Student poststudent(Student student);          
     List<Student> getAllStudents();                
-    Optional<Student> getStudentById(Long id);               
+    Optional<Student> getStudentById(Long id); 
+    String updateData()              
     // Student updateStudent(Long id, Student student); 
     // void deleteStudent(Long id);                   
 }
