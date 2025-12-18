@@ -1,13 +1,14 @@
 package com.example.demo.entity;
 import jakarta.persistence.*;
 import java.time.*;
+import jakarta.validation.constraints.*;
 @Entity
 public class Student {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @NotNull
     private Long id;
-    @Size(min="1" ,max="10" ,message="Name should be under 1 to 10 characters")
+    @Size(min=1 ,max=10 ,message="Name should be under 1 to 10 characters")
     private String name;
     private String dept;
     private LocalDate dob;
