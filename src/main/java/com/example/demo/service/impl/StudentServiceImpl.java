@@ -30,4 +30,9 @@ public class StudentServiceImpl implements StudentService {
     public Optional<Student> getStudentById(Long id) {
         return stdrepo.findById(id);
     }
+    @Override
+    public String updateData(Long id,Student student){
+       boolean status=stdrepo.existsById(id);
+       
+    }
 }
