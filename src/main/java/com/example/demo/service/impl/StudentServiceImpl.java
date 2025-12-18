@@ -7,8 +7,7 @@ import com.example.demo.entity.Student;
 import com.example.demo.repository.StudentRepository;
 import com.example.demo.service.StudentService;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -30,27 +29,29 @@ public class StudentServiceImpl implements StudentService {
     public Optional<Student> getStudentById(Long id) {
         return stdrepo.findById(id);
     }
+
     @Override
-    public String updateData(Long id,Student student){
-       boolean status=stdrepo.existsById(id);
-       if(status){
-              student.setId(id);
-              stdrepo.save(student);
-              return "Student updated successfully";
-       }
-       else{
-              return "Student with ID "+id+" not found";
-       }
+    public String updateData(Long id, Student student) {
+        Optional<Student> existing = stdrepo.findById(id);
+
+        if (existing.isPresent()) {
+            Student s = existing.get();
+            s.setName(student.getName());
+            s.setDept(student.getDept());
+            s.setDob(student.getDob());
+            s.setCgpa(student.getCgpa());
+            stdrepo.save(s);
+            return "Student updated successfully";
+        }
+        return "Student not found";
     }
+
     @Override
-    public String deleteData(Long id){
-        boolean status=stdrepo.existsById(id);  
-        if(status){
+    public String deleteData(Long id) {
+        if (stdrepo.existsById(id)) {
             stdrepo.deleteById(id);
-            return "Student Deleted Successfully";
+            return "Student deleted successfully";
         }
-        else{
-          return "Student Not Found";
-        }
+        return "Student not found";
     }
 }
